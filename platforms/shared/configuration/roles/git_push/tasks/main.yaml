@@ -17,8 +17,8 @@
     cd "{{ GIT_DIR }}"
     echo "---------------GIT PUSH---------------"
     export GIT_SSH_COMMAND='ssh -i {{ gitops.private_key }}'
-    git config user.email {{ gitops.email }}
-    git config user.name {{ gitops.username }}
+    git config --global user.email {{ gitops.email }}
+    git config --global user.name {{ gitops.username }}
     git --git-dir={{ GIT_DIR }}/.git pull
     git --git-dir={{ GIT_DIR }}/.git add -A .
     
@@ -43,8 +43,8 @@
   shell: |
     cd "{{ GIT_DIR }}"
     echo "---------------GIT PUSH---------------"
-    git config user.email {{ gitops.email }}
-    git config user.name {{ gitops.username }}
+    git config --global user.email {{ gitops.email }}
+    git config --global user.name {{ gitops.username }}
     git --git-dir={{ GIT_DIR }}/.git pull
     git --git-dir={{ GIT_DIR }}/.git add -A .
     

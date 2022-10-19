@@ -21,6 +21,8 @@
   - name: "Create image pull secret for identities"
     include_role:
       name: create/imagepullsecret
+    when:
+    - network.docker.username is defined
 
 # ---------------------------------------------------------------------
 # Create Deployment files for new Identities

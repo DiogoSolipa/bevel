@@ -20,6 +20,8 @@
 - name: "Create image pull secret for stewards"
   include_role:
     name: create/imagepullsecret
+  when:
+  - network.docker.username is defined
 
 # ---------------------------------------------------------------------
 # create deployment file for node steward
