@@ -1,0 +1,30 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: authority-dtg
+  annotations:
+    fluxcd.io/automated: "false"
+  namespace: authority-ns
+spec:
+  releaseName: authority-dtg
+  interval: 1m
+  chart:
+   spec:
+    chart: platforms/hyperledger-indy/charts/indy-domain-genesis
+    sourceRef:
+      kind: GitRepository
+      name: flux-bevel
+      namespace: flux-bevel
+  values:
+    metadata:
+      name: authority-dtg
+      namespace: authority-ns
+    organization:
+      name: authority
+    configmap:
+      domainGenesis: |-
+        {"reqSignature":{},"txn":{"data":{"alias":"authority-trustee","dest":"L2iUWktRh5KpH2gCAYHBHc","role":"0","verkey":"BNZcLwjhchshZuftLxj6bMUoVjT6nGPQH22vQMFJiNyq"},"metadata":{},"type":"1"},"txnMetadata":{"seqNo":1},"ver":"1"}
+        {"reqSignature":{},"txn":{"data":{"alias":"university-steward-1","dest":"UvyvMBiNZR8sJLHgaQdF94","role":"2","verkey":"GDwogg3dVnfmC6Cd99L3jZHWcziFBEt5vH1VqQkpL7zC"},"metadata":{"from":"L2iUWktRh5KpH2gCAYHBHc"},"type":"1"},"txnMetadata":{"seqNo":2},"ver":"1"}
+        {"reqSignature":{},"txn":{"data":{"alias":"university-steward-2","dest":"CdNMfVdm9rmasELq1xjX2L","role":"2","verkey":"7LZ7JMgzWZP3Zdr3SsvwR6raLbBQeNqrK37x2XYHfktH"},"metadata":{"from":"L2iUWktRh5KpH2gCAYHBHc"},"type":"1"},"txnMetadata":{"seqNo":3},"ver":"1"}
+        {"reqSignature":{},"txn":{"data":{"alias":"university-steward-3","dest":"DMfJHwWyBZLJqUzf8ptn7B","role":"2","verkey":"7jc3dPe5n3U7LkYnsKcvZhfsczqpyZE1458TPJXYt2Mr"},"metadata":{"from":"L2iUWktRh5KpH2gCAYHBHc"},"type":"1"},"txnMetadata":{"seqNo":4},"ver":"1"}
+        {"reqSignature":{},"txn":{"data":{"alias":"university-steward-4","dest":"JB3BYZCkxcgK1UCnHDsyFi","role":"2","verkey":"AMsiLN9MW5ySWMFp8g5ALdBxxyfquj64uxyHhdTDwAn3"},"metadata":{"from":"L2iUWktRh5KpH2gCAYHBHc"},"type":"1"},"txnMetadata":{"seqNo":5},"ver":"1"}
